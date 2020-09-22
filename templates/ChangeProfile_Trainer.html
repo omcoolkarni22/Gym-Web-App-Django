@@ -1,0 +1,43 @@
+{% extends 'base_trai.html' %}
+{% block body %}
+    <h1>Edit Your Profile</h1>
+<form method="post" action="ChangeProfile_Trainer">
+	{% csrf_token %}
+    {% for d1 in det_c1 %}
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" value= {{ d1.first_name }} > <br> <br>
+    {% endfor %}
+
+    {% for d in det_t %}
+    <label for="age">Age</label>
+    <input id="age" name="age" type="number" value= {{ d.age }} > <br> <br>
+
+    <label for="spec">Speciality</label>
+    <input id="spec" name="speciality" type="text" value= {{ d.speciality }} > <br> <br>
+
+    <label for="qualification">Qualification</label>
+    <input id="qualification" name="qualification" type="text" value= {{ d.qualification }} > <br> <br>
+
+    <label for="Address_of">Home Address</label>
+    <input id="Address_of" name="Address_of" type="text" value= {{ d.Address_of }} > <br> <br>
+
+    <label for="postcode">Postcode</label>
+    <input id="postcode" name="postcode" type="number" value={{ d.postcode }} > <br> <br>
+
+    <label for="telenumber">Telephone Number</label>
+    <input id="telenumber" name="telephone" type="number" value={{ d.telephone }} > <br> <br>
+
+    <label for="aval_days">Available days</label>
+    <input id="aval_days" name="days" type="number" value={{ d.aval_days }} > <br> <br>
+
+    <label for="Available_time">Available Time</label>
+    <input id="Available_time" name="time" type="number" value={{ d.aval_time }} > <br> <br>
+
+    <label for="ser">Services offered</label>
+    <input id="ser" name="ser_offered" type="number" value={{ d.ser_offered }} > <br> <br>
+    {% endfor %}
+        <input type="Submit">
+</form>
+
+
+{% endblock body %}

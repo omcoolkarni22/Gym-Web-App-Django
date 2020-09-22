@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+
+{% block body %}
+
+{% for detail in trainers %}
+<img src={{ detail.profile_picture.url }} alt={{ detail.email }} style="width:150px"> <br> <br>
+<label >Name: {{ detail.name }} </label> <br> <br>
+<label >Email: {{ detail.email }} </label> <br> <br>
+<label >Age: {{ detail.age }} </label> <br> <br>
+<label >Speciality: {{ detail.speciality }} </label> <br> <br>
+<label >Qualification: {{ detail.qualification }} </label> <br> <br>
+<label >Address of Training Location: {{ detail.Address_of }} </label> <br> <br>
+<label >Postcode: {{ detail.postcode }} </label> <br> <br>
+<label >Telephone Number: {{ detail.telephone }} </label>  <br> <br>
+<label >Available days: {{ detail.aval_days }} </label> <br> <br>
+<label >Available Time: {{ detail.aval_time }} </label> <br> <br>
+<label >Services Offered: {{ detail.ser_offered }} </label> <br> <br>
+{% endfor %}
+
+<form method="post" action="Train_Message">
+    {% csrf_token %}
+<input type="text" placeholder="Message" name="message">
+<input type="submit" value="Submit">
+</form>
+
+{% endblock body %}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block script %}
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position: absolute;
+        top: 70px;
+        bottom: 0;
+        width: 100%;
+      }
+      .marker {
+  background-image: url("{% static 'mapbox-icon.png' %}");
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+    </style>
+{% endblock script %}
+{% block body %}
+<div id='map'></div>
+<!-- script for adding  marker on map-->
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoib21jb29sa2FybmkiLCJhIjoiY2s4bjR6bWRiMG1jMDNmcWN6czJmZHhnOCJ9.5GiO769m9jQEGsIFgBkQ8g';
+
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/light-v10',
+  center: [-96, 37.8],
+  zoom: 3
+});
+
+// code from the next step will go here!
+// the data from database is extracted here
+{% for tra in trainer %}
+// var geojson is an json file
+// coordinates are longitude and latitude
+var geojson = {
+  type: 'FeatureCollection',
+  features: [
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [{{ tra.longitude }}, {{ tra.latitude }}]
+    },
+    properties: {
+      title: '{{ tra.name }}',
+      description: '{{ tra.age }}'
+    }
+  }
+  ]
+};
+
+// add markers to map
+  geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates) //fetch longitude and latitude
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    .setHTML('<h3><a href="TrainerDetails/{{ tra.id }}">' + 'Name: ' + marker.properties.title + '</a></h3><p>' + 'Age: ' + marker.properties.description + '</p>'))
+    .addTo(map);
+});
+
+{% endfor %}
+//end the started for loop
+</script>
+
+{% endblock body %}

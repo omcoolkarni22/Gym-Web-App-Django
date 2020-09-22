@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1>Edit Your Profile</h1>
+<form method="post" action="ChangeProfile_Client">
+	{% csrf_token %}
+    {% for d1 in det_c %}
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" value= {{ d1.first_name }} > <br> <br>
+    {% endfor %}
+    {% for d in det %}
+    <label for="age">Age</label>
+    <input id="age" name="age" type="number" value= {{ d.age }} > <br> <br>
+
+    <label for="address">Home Address</label>
+    <input id="address" name="address" type="text" value= {{ d.Address }} > <br> <br>
+
+    <label for="postcode">Home Postcode</label>
+    <input id="postcode" name="postcode" type="number" value={{ d.postcode }} > <br> <br>
+
+    <label for="number">Telephone Number</label>
+    <input id="number" name="phone" type="number" value={{ d.telephone }} > <br> <br>
+
+    <label for="aval_days">Available days</label>
+    <input id="aval_days" name="days" type="number" value={{ d.aval_days }} > <br> <br>
+
+    <label for="Available_time">Available Time</label>
+    <input id="Available_time" name="time" type="number" value={{ d.aval_time }} > <br> <br>
+    {% endfor %}
+        <input type="Submit">
+</form>
+
+{% endblock body %}

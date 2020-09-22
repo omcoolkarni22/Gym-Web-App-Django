@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Trainer - Create Your Profile</title>
+</head>
+
+<body>
+    <h1>Create Your Profile</h1>
+<form action="Trainer_CreateAccount" method="post">
+    {% csrf_token %}
+    <label for="age">Age</label>
+    <input id="age" name="age" type="number" placeholder="Age" required> <br> <br>
+
+    <label for="gender">Gender</label>
+    <input id="gender" name="gender" type="text" placeholder="Male or Female" required> <br> <br>
+
+    <label for="speciality">Speciality</label>
+    <input id="speciality" name="speciality" type="text" placeholder="Speciality" required> <br> <br>
+
+    <label for="qualification">Qualification</label>
+    <input id="qualification" name="qualification" type="text" placeholder="Qualification" required> <br> <br>
+
+    <label for="address">Address of Training Location</label>
+    <input id="address" name="address" type="text" placeholder="Address of Training Location" required> <br> <br>
+
+    <label for="postcode">Postcode</label>
+    <input id="postcode" name="postcode" type="number" placeholder="Postcode" required> <br> <br>
+
+    <label for="number">Telephone Number</label>
+    <input id="number" name="number" type="number" placeholder="Telephone Number" required> <br> <br>
+
+    <label for="aval_days">Available days</label>
+    <input id="aval_days" name="aval_days" type="number" placeholder="Available days" required> <br> <br>
+
+    <label for="Available_time">Available Time</label>
+    <input id="Available_time" name="aval_time" type="number" placeholder="Available time" required> <br> <br>
+
+    <label for="service">Types of services offered</label>
+    <input id="service" name="services" type="text" placeholder="Types of services offered" required> <br> <br>
+
+     <br>
+        <input type="submit">
+</form>
+
+</body>
+</html>

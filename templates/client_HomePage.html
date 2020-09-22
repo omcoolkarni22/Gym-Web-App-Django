@@ -1,0 +1,108 @@
+
+{% extends "base.html" %}
+{% block script %}
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  width: 220px;
+  position: fixed;
+  z-index: 1;
+  top: 60px;
+  left: 10px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #2196F3;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+
+.main {
+  margin-left: 70px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+{% endblock script %}
+{% block body %}
+
+
+<div class="sidenav">
+  <h2 class="w3-bar-item">Filter</h2>
+  <form action="filter" method="get">
+    {% csrf_token %}
+      <h3>Age:</h3>
+      <input type="checkbox" id="vehicle1" name="eighteen_twentyfive" value="eighteen_twentyfive">
+        <label for="vehicle1" > 18-25</label><br>
+      <input type="checkbox" id="vehicle2" name="twentyfive_thirtyfive" value="twentyfive_thirtyfive">
+        <label for="vehicle2"> 25-35</label><br>
+      <input type="checkbox" id="vehicle3" name="thirtyfive_fourtyfive" value="thirtyfive_fourtyfive">
+        <label for="vehicle3"> 35-45</label><br>
+      <input type="checkbox" id="over" name="fourtyfive_over" value="fourtyfive_over">
+        <label for="over">45-over</label><br>
+
+      <h3>Gender:</h3>
+      <input type="checkbox" id="male" name="male" value="male">
+      <label for="male"> Male</label><br>
+      <input type="checkbox" id="female" name="female" value="female">
+      <label for="female"> Female</label><br>
+
+      <h3>Distance:</h3>
+      <label for="distance">Up to </label>
+      <input id="distance" name="km" type="number" placeholder="km"> <br> <br>
+
+      <h3>Types of services:</h3>
+      <input type="checkbox" id="group_session" name="group_session" value="group_session">
+      <label for="group_session"> Group Session</label><br>
+      <input type="checkbox" id="one_to_one" name="one_to_one" value="one_to_one">
+      <label for="one_to_one"> 1 to 1</label><br>
+      <input type="checkbox" id="diet_plan" name="diet_plan" value="diet_plan">
+      <label for="diet_plan"> Diet plan</label><br>
+      <input type="checkbox" id="online_coaching" name="online_coaching" value="online_coaching">
+      <label for="online_coaching"> Online Coaching</label><br>
+
+      <input type="submit" value="Submit">
+  </form>
+</div>
+
+<div class="main">
+{% for tra in Trainers %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+    <div class="card" style="width: 18rem;" >
+  <img src="{{ tra.profile_picture.url }}" class="card-img-top" alt="Trainer-Profile Picture">
+  <div class="card-body">
+    <h5 class="card-title">{{ tra.name }}</h5>
+    <p class="card-text"> Age: {{ tra.age }}</p>
+    <a href="TrainerDetails/{{ tra.id }}" target="_blank" class="btn btn-primary">View Profile</a>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock body %}

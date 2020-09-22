@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1>Create Your Profile</h1>
+<form method="post" action="Client_CreateAccount">
+	{% csrf_token %}
+    <label for="age">Age</label>
+    <input id="age" name="age" type="number" placeholder="Age" required> <br> <br>
+
+    <label for="address">Home Address</label>
+    <input id="address" name="address" type="text" placeholder="Address" required> <br> <br>
+
+    <label for="postcode">Home Postcode</label>
+    <input id="postcode" name="postcode" type="number" placeholder="Postcode" required> <br> <br>
+
+    <label for="number">Telephone Number</label>
+    <input id="number" name="phone" type="number" placeholder="Telephone Number" required> <br> <br>
+
+    <label for="aval_days">Available days</label>
+    <input id="aval_days" name="days" type="number" placeholder="Available days" required> <br> <br>
+
+    <label for="Available_time">Available Time</label>
+    <input id="Available_time" name="time" type="number" placeholder="Available time" required> <br> <br>
+
+        <input type="Submit">
+</form>
+
+{% endblock body %}

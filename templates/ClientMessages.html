@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% for message in messages1 %}
+
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action active">
+    {{ message.name_of_tra }}
+  </a>
+
+</div>
+{% endfor %}
+
+{% endblock body %}

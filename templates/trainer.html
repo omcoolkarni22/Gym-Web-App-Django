@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block body %}
+<form class="form-horizontal" action='Trainer_Login' method="POST">
+    {% csrf_token %}
+  <fieldset>
+
+    <div id="legend1">
+      <legend class="">Log In</legend>
+    </div>
+    <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="email">E-mail</label>
+      <div class="controls">
+        <input type="text" id="login_email" name="email" placeholder="Email" class="input-xlarge" required>
+        <p class="help-block">Please provide your E-mail</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Password-->
+      <label class="control-label" for="password">Password</label>
+      <div class="controls">
+        <input type="password" id="login_password" name="password" placeholder="password" class="input-xlarge" required>
+        <p class="help-block">Password You gave at time of Registration</p>
+      </div>
+    </div>
+      <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button class="btn btn-success" type="submit">Log-in</button>
+      </div>
+      </div>
+  </fieldset>
+</form>
+
+
+<form class="form-horizontal" action='Trainer' method="POST">
+    {% csrf_token %}
+  <fieldset>
+
+    <div id="legend">
+      <legend class="">Register</legend>
+    </div>
+    <div class="control-group">
+      <!-- Username -->
+      <label class="control-label"  for="username">Username</label>
+      <div class="controls">
+        <input type="text" id="username" name="username" placeholder="username" class="input-xlarge" required>
+        <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="email">E-mail</label>
+      <div class="controls">
+        <input type="text" id="email" name="email" placeholder="email" class="input-xlarge" required>
+        <p class="help-block">Please provide your E-mail</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Password-->
+      <label class="control-label" for="password">Password</label>
+      <div class="controls">
+        <input type="password" id="password" name="password" placeholder="password" class="input-xlarge" required>
+        <p class="help-block">Password should be at least 4 characters</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Password -->
+      <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+      <div class="controls">
+        <input type="password" id="password_confirm" name="password_confirm" placeholder="password_confirm" class="input-xlarge" required>
+        <p class="help-block">Please confirm password</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button class="btn btn-success" type="submit" >Register</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+
+{% endblock body %}
