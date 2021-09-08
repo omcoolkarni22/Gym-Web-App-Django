@@ -23,7 +23,7 @@ mysqlclient==1.4.6
 numpy==1.18.2
 pandas==1.0.3
 pgeocode==0.2.1
-Pillow==7.1.1
+Pillow==8.3.2
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.20
